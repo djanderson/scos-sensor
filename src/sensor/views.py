@@ -4,6 +4,7 @@ from rest_framework.renderers import CoreJSONRenderer, BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.schemas import SchemaGenerator
 from rest_framework.views import APIView
+from rest_framework_swagger.views import get_swagger_view
 
 from .schema import OpenAPIRenderer
 
@@ -40,3 +41,6 @@ def get_openapi_view(title=None, url=None, patterns=None, urlconf=None):
             return Response(schema)
 
     return OpenAPISchemaView.as_view()
+
+
+schema_view = get_swagger_view(title='SCOS Sensor API')

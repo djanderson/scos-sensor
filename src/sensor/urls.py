@@ -30,7 +30,7 @@ from rest_framework.reverse import reverse
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from .settings import API_TITLE, API_DESCRIPTION
-from .views import get_openapi_view
+from .views import get_openapi_view, schema_view
 
 
 @api_view(('GET',))
@@ -54,7 +54,7 @@ api_v1_urlpatterns = format_suffix_patterns((
     url(r'^schedule/', include('schedule.urls')),
     url(r'^status', include('status.urls')),
     url(r'^users/', include('authentication.urls')),
-    url(r'^schema', get_openapi_view(title=API_TITLE)),
+    url(r'^schema', schema_view),
 ))
 
 urlpatterns = (
